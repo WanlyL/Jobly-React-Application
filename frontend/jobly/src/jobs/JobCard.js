@@ -23,7 +23,7 @@ function JobCard({ id, title, salary, equity, companyName }) {
     setApplied(hasAppliedToJob(id));
   }, [id, hasAppliedToJob]);
 
-  /** Apply for a job */
+
   async function handleApply(evt) {
     if (hasAppliedToJob(id)) return;
     applyToJob(id);
