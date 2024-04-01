@@ -31,7 +31,6 @@ function ProfileForm() {
   });
   const [formErrors, setFormErrors] = useState([]);
 
-  // switch to use our fancy limited-time-display message hook
   const [saveConfirmed, setSaveConfirmed] = useState(false);
   // const [saveConfirmed, setSaveConfirmed] = useTimedMessage()
 
@@ -76,11 +75,9 @@ function ProfileForm() {
     setFormErrors([]);
     setSaveConfirmed(true);
 
-    // trigger reloading of user information throughout the site
     setCurrentUser(updatedUser);
   }
 
-  /** Handle form data changing */
   function handleChange(evt) {
     const { name, value } = evt.target;
     setFormData(f => ({
