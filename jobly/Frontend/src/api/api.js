@@ -3,6 +3,7 @@ import axios from "axios";
 const BASE_URL = process.env.REACT_APP_BASE_URL || "http://localhost:3001";
 
 class JoblyApi {
+  // the token for interactive with the API will be stored here.
   static token;
 
   static async request(endpoint, data = {}, method = "get") {
@@ -23,7 +24,6 @@ class JoblyApi {
     }
   }
 
-
   static async getCurrentUser(username) {
     let res = await this.request(`users/${username}`);
     return res.user;
@@ -34,7 +34,6 @@ class JoblyApi {
     let res = await this.request("companies", { name });
     return res.companies;
   }
-
 
   static async getCompany(handle) {
     let res = await this.request(`companies/${handle}`);
@@ -52,21 +51,17 @@ class JoblyApi {
     await this.request(`users/${username}/jobs/${id}`, {}, "post");
   }
 
-  /** Get token for login from username, password. */
 
   static async login(data) {
     let res = await this.request(`auth/token`, data, "post");
     return res.token;
   }
 
-  /** Signup for site. */
-
   static async signup(data) {
     let res = await this.request(`auth/register`, data, "post");
     return res.token;
   }
 
-  /** Save user profile page. */
 
   static async saveProfile(username, data) {
     let res = await this.request(`users/${username}`, data, "patch");
